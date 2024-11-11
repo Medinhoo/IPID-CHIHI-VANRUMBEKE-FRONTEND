@@ -8,96 +8,110 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import LogoutIcon from "@mui/icons-material/Logout";
 import WalletIcon from "@mui/icons-material/Wallet";
-import logo from '../assets/logo_isfce.png'
-import LocalDiningIcon from '@mui/icons-material/LocalDining';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import logo from "../assets/logo_isfce.png";
+import LocalDiningIcon from "@mui/icons-material/LocalDining";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import HistoryIcon from "@mui/icons-material/History";
 
-const pages = ["Menu", "Mes commandes", "Mon compte"];
+const pages = ["Commander", "Historique", "Mon compte"];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
 
   return (
     <AppBar
       sx={{
-        position: { xs: 'fixed', md: 'static' }, // Positionne l'AppBar en bas sur mobile, et statique sur les grands écrans
+        position: { xs: "fixed", md: "static" }, // Positionne l'AppBar en bas sur mobile, et statique sur les grands écrans
         width: { xs: "100%", md: "80%" },
-        mx: 'auto',
+        mx: "auto",
         borderRadius: 6,
-        top: {xs: 'auto'} , 
-        bottom: {xs: 10},
+        top: { xs: "auto" },
+        bottom: { xs: 10 },
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {
-          //Logo desktop view
+            //Logo desktop view
           }
-          <Box component="img" 
-              src={logo} 
-              alt="Logo ISFCE" 
-              sx={{ display: { xs: "none", md: "flex" }, width: '60px', height: 'auto' }} 
+          <Box
+            component="img"
+            src={logo}
+            alt="Logo ISFCE"
+            sx={{
+              display: { xs: "none", md: "flex" },
+              width: "55px",
+              height: "auto",
+              marginBottom:'2px',
+              mr:1.5
+            }}
           />
 
           {
-          //Mobile view
+            //Mobile view
           }
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none", justifyContent:'center', gap: 4 } }}>
-
-
-          {
-            //Wallet
-          }
-          
-              <IconButton color="default">
-                <AccountCircleIcon fontSize="large" />
-              </IconButton>
-              
-              <IconButton color="default">
-                <WalletIcon fontSize="large" />
-              </IconButton>
-
-          {
-          //Logo
-          }
-          <Box component="img" 
-              src={logo} 
-              alt="Logo ISFCE" 
-              sx={{ display: { xs: "flex", md: "none" }, width: '50px', height: '50px'}} 
-          />
-          <IconButton color="default">
-              <LocalDiningIcon fontSize="large"/>
-            </IconButton>
-          <IconButton color="default">
-              <LocalDiningIcon fontSize="large"/>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: {
+                xs: "flex",
+                md: "none",
+                justifyContent: "center",
+                alignItems:'center',
+                gap: 30,
+              },
+            }}
+          >
+            {
+              //History order
+            }
+            <IconButton color="default" size="large">
+              <HistoryIcon fontSize="large" sx={{color:'white'}}/>
             </IconButton>
 
-          <IconButton color="error">
-              <LogoutIcon fontSize="large"/>
+            {
+              //orders
+            }
+            <IconButton color="default" size="large">
+              <LocalDiningIcon fontSize="large" sx={{color:'white'}}/>
             </IconButton>
 
-          
-            
+            {
+              //Logo
+            }
+            <Box
+              component="img"
+              src={logo}
+              alt="Logo ISFCE"
+              sx={{
+                display: { xs: "flex", md: "none" },
+                width: "50px",
+                height: "50px",
+                paddingBottom:'3px'
+              }}
+            />
+
+            {
+              //Wallet
+            }
+            <IconButton color="default" size="large">
+            <WalletIcon fontSize="large" sx={{color:'white'}}/>
+            </IconButton>
+
+            {
+              //Profile
+            }
+            <IconButton color="default" size="large">
+            <AccountCircleIcon fontSize="large" sx={{color:'white'}} />
+            </IconButton>
           </Box>
-          
 
           {
-          //desktop view
+            //desktop view
           }
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
@@ -106,9 +120,9 @@ function ResponsiveAppBar() {
           </Box>
 
           {
-          //Wallet and disconnect
+            //Wallet and disconnect
           }
-          <Box sx={{ flexGrow: 0, display: "flex", gap:3 }}>
+          <Box sx={{ flexGrow: 0, display: "flex", gap: 3 }}>
             <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
               <Typography
                 variant="h6"
@@ -116,7 +130,7 @@ function ResponsiveAppBar() {
                 href="#app-bar-with-responsive-menu"
                 sx={{
                   display: { xs: "none", md: "flex" },
-                  alignItems:'center',
+                  alignItems: "center",
                   fontWeight: 500,
                   letterSpacing: ".1rem",
                   color: "inherit",
@@ -126,16 +140,14 @@ function ResponsiveAppBar() {
                 60.00€
               </Typography>
 
-              <IconButton color="default">
-                <WalletIcon />
+              <IconButton size="large"  sx={{color:'white'}}>
+                <WalletIcon/>
               </IconButton>
-            <IconButton color="error">
-              <LogoutIcon />
-            </IconButton>
+              <IconButton color="error" size="large">
+                <LogoutIcon />
+              </IconButton>
             </Box>
-
           </Box>
-
         </Toolbar>
       </Container>
     </AppBar>
