@@ -1,15 +1,17 @@
 import React from 'react'
 import Navbar from './components/Navbar'
-import HomePage from './pages/HomePage'
+import OrderPage from './pages/OrderPage'
+import ProfilePage from './pages/ProfilePage'
 import './assets/fonts/fonts.css'
 
 const App = () => {
   return (
     <>
     <Navbar/>
-    <HomePage/>
+    <OrderPage/>
     </>
   )
 }
 
 export default App
+
