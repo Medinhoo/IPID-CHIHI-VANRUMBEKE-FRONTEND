@@ -1,12 +1,13 @@
 import React from 'react'
 import Navbar from './components/Navbar'
-import OrderPage from './pages/OrderPage'
+import HomePage from './pages/HomePage'
+import './assets/fonts/fonts.css'
 
 const App = () => {
   return (
     <>
     <Navbar/>
-    <OrderPage/>
+    <HomePage/>
     </>
   )
 }
