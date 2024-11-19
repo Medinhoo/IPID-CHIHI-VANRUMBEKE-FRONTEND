@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,7 +14,11 @@ import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import HistoryIcon from "@mui/icons-material/History";
 
-const pages = ["Commander", "Historique", "Mon compte"];
+const pages = [
+  { name: "Commander", path: "/commander" },
+  { name: "Historique", path: "/historique" },
+  { name: "Mon compte", path: "/mon-compte" },
+];
 
 function ResponsiveAppBar() {
   return (
@@ -26,7 +31,7 @@ function ResponsiveAppBar() {
         top: { xs: "auto" },
         bottom: { xs: 10 },
         mb: { md: 1 },
-        backgroundColor: "#2A4B7C", // Couleur de fond de la navbar
+        backgroundColor: "#2A4B7C",
         transition: "background-color 0.3s ease, transform 0.3s ease",
       }}
     >
@@ -61,6 +66,8 @@ function ResponsiveAppBar() {
           >
             {/* History order */}
             <IconButton
+              component={Link}
+              to="/historique"
               color="default"
               size="large"
               sx={{
@@ -68,7 +75,7 @@ function ResponsiveAppBar() {
                 transition: "transform 0.2s, color 0.2s",
                 "&:hover": {
                   transform: "scale(1.2)",
-                  color: "#fffff", // Changement de couleur au survol
+                  color: "#fffff",
                 },
                 "&:active": {
                   transform: "scale(0.9)",
@@ -80,6 +87,8 @@ function ResponsiveAppBar() {
 
             {/* Orders */}
             <IconButton
+              component={Link}
+              to="/commander"
               color="default"
               size="large"
               sx={{
@@ -87,7 +96,7 @@ function ResponsiveAppBar() {
                 transition: "transform 0.2s, color 0.2s",
                 "&:hover": {
                   transform: "scale(1.2)",
-                  color: "#fffff", // Changement de couleur au survol
+                  color: "#fffff",
                 },
                 "&:active": {
                   transform: "scale(0.9)",
@@ -119,7 +128,7 @@ function ResponsiveAppBar() {
                 transition: "transform 0.2s, color 0.2s",
                 "&:hover": {
                   transform: "scale(1.2)",
-                  color: "#fffff", // Changement de couleur au survol
+                  color: "#fffff",
                 },
                 "&:active": {
                   transform: "scale(0.9)",
@@ -131,6 +140,8 @@ function ResponsiveAppBar() {
 
             {/* Profile */}
             <IconButton
+              component={Link}
+              to="/mon-compte"
               color="default"
               size="large"
               sx={{
@@ -138,7 +149,7 @@ function ResponsiveAppBar() {
                 transition: "transform 0.2s, color 0.2s",
                 "&:hover": {
                   transform: "scale(1.2)",
-                  color: "#fffff", // Changement de couleur au survol
+                  color: "#fffff",
                 },
                 "&:active": {
                   transform: "scale(0.9)",
@@ -153,7 +164,9 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.name}
+                component={Link}
+                to={page.path}
                 sx={{
                   my: 2,
                   color: "white",
@@ -178,7 +191,7 @@ function ResponsiveAppBar() {
                     left: 0,
                   },
                   "&:hover": {
-                    color: "#fffff", // Couleur au survol
+                    color: "#fffff",
                     transform: "scale(1.05)",
                   },
                   "&:active": {
@@ -186,7 +199,7 @@ function ResponsiveAppBar() {
                   },
                 }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>
@@ -217,7 +230,7 @@ function ResponsiveAppBar() {
                   transition: "transform 0.2s, color 0.2s",
                   "&:hover": {
                     transform: "scale(1.2)",
-                    color: "#ffcc00", // Changement de couleur au survol
+                    color: "#ffcc00",
                   },
                   "&:active": {
                     transform: "scale(0.9)",
